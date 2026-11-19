@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Rubik:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-warm: #F4ECE1;
+  --surface-card: #FFFDF9;
+  --rosewood-deep: #7A2E3A;
+  --burgundy-dark: #4A1822;
+  --cacao-deep: #3A201A;
+  --merona-rich: #B84335;
+  --gold-warm: #C9943B;
+  --gold-soft: #F3D9A4;
+  --ink-rich: #1F1A18;
+  --muted-ink: #574D48;
+  --line-warm: #DECFC0;
+}
+
+/* 1. Reset & Pengaturan Umum */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", Arial, sans-serif;
+  color: var(--ink-rich);
+  line-height: 1.65;
+  background-color: var(--bg-warm);
+  background-image: radial-gradient(#CBB8A6 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* --- ANIMASI ELEGAN --- */
+@keyframes headerRichFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Animasi foto mengambang + sedikit miring ke kiri (untuk foto ganjil) */
+@keyframes photoTiltLeft {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-2.4deg);
+  }
+}
+
+/* Animasi foto mengambang + sedikit miring ke kanan (untuk foto genap) */
+@keyframes photoTiltRight {
+  0%, 100% {
+    transform: translateY(0px) rotate(1.5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2.4deg);
+  }
+}
+
+@keyframes emblemSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.75;
+  }
+}
+
+@keyframes accentBreath {
+  0%, 100% {
+    width: 48px;
+    opacity: 0.65;
+  }
+  50% {
+    width: 84px;
+    opacity: 1;
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+/* 2. HEADER & NAVIGASI */
+header {
+  background: linear-gradient(125deg, var(--burgundy-dark), var(--rosewood-deep), var(--cacao-deep), var(--merona-rich), var(--burgundy-dark));
+  background-size: 320% 320%;
+  animation: headerRichFlow 16s ease-in-out infinite;
+  color: #FFFDF9;
+  text-align: center;
+  padding: 52px 20px 44px;
+  border-bottom: 3px solid var(--gold-warm);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(42, 16, 22, 0.22);
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(243, 217, 164, 0.28);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+header::before {
+  content: "✦ MERONA · SWEET & SAVORY";
+  display: inline-block;
+  background-color: rgba(255, 253, 249, 0.14);
+  color: var(--gold-soft);
+  border: 1px solid rgba(243, 217, 164, 0.45);
+  padding: 5px 16px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+  margin-bottom: 14px;
+  animation: gentleFloat 4s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #FFFDF9;
+  letter-spacing: -0.5px;
+  line-height: 1.12;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.32);
+  position: relative;
+  z-index: 1;
+}
+
+header p {
+  margin: 0 auto 22px;
+  max-width: 580px;
+  color: #F3E5DC;
+  font-style: italic;
+  font-size: 1.02rem;
+  position: relative;
+  z-index: 1;
+}
+
+nav {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+nav a {
+  color: var(--ink-rich);
+  background-color: var(--surface-card);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 253, 249, 0.65);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: all 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav a:hover {
+  background-color: var(--gold-warm);
+  border-color: var(--gold-warm);
+  color: #FFFDF9;
+  transform: translateY(-2.5px) scale(1.02);
+}
+
+/* 3. Tata Letak Konten Utama */
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 34px 20px;
+}
+
+section {
+  background-color: var(--surface-card);
+  border: 1px solid var(--line-warm);
+  border-top: 4px solid var(--merona-rich);
+  border-left: 3px solid var(--gold-warm);
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(42, 24, 20, 0.08);
+  padding: 32px;
+  margin: 28px 0;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+section:hover {
+  box-shadow: 0 16px 34px rgba(42, 24, 20, 0.12);
+}
+
+section:nth-of-type(even) {
+  border-top-color: var(--rosewood-deep);
+  border-left-color: var(--merona-rich);
+  background-color: #FAF6F0;
+}
+
+section::before {
+  content: "❖";
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  color: var(--gold-warm);
+  font-size: 0.95rem;
+  animation: emblemSpin 14s linear infinite;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  bottom: 14px;
+  width: 54px;
+  height: 3px;
+  border-radius: 999px;
+  background-color: var(--gold-warm);
+  animation: accentBreath 4.2s ease-in-out infinite;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--rosewood-deep);
+  border-bottom: 2px solid var(--line-warm);
+  padding-bottom: 8px;
+  display: inline-block;
+  position: relative;
+}
+
+h2::after {
+  content: " • ✦";
+  color: var(--gold-warm);
+  font-size: 0.9rem;
+  margin-left: 6px;
+  display: inline-block;
+  animation: dotPulse 3s ease-in-out infinite;
+}
+
+/* FOTO MENU: 2 kolom di layar lebar + animasi miring & mengambang yang jelas */
+img {
+  width: 46% !important;
+  max-width: 390px !important;
+  height: 230px !important;
+  object-fit: cover !important;
+  border-radius: 16px;
+  border: 1.5px solid var(--line-warm);
+  box-shadow: 0 10px 22px rgba(31, 26, 24, 0.14);
+  background-color: #FFFFFF;
+  padding: 5px;
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin: 18px 1.5% 12px !important;
+  animation: photoTiltLeft 4.2s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+img:nth-of-type(even) {
+  animation: photoTiltRight 4.2s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+/* Saat kursor diarahkan, fotonya jadi tegak & terangkat jelas */
+img:hover {
+  animation-play-state: paused;
+  transform: translateY(-8px) rotate(0deg) scale(1.03);
+  border-color: var(--gold-warm);
+  box-shadow: 0 18px 34px rgba(122, 46, 58, 0.24);
+}
+
+/* NAMA MENU (Panna Cotta, Bakso, Cilok, Quesillo) */
+img + p {
+  display: inline-block !important;
+  vertical-align: top !important;
+  width: 46% !important;
+  max-width: 390px !important;
+  margin: 14px 1.5% 24px !important;
+  padding: 10px 16px;
+  background-color: #FBF4EB;
+  border-top: 2px solid var(--gold-warm);
+  border-bottom: 2px solid var(--gold-warm);
+  border-left: 3px solid var(--merona-rich);
+  border-right: 3px solid var(--rosewood-deep);
+  border-radius: 14px;
+  text-align: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--rosewood-deep);
+  letter-spacing: 0.2px;
+  box-shadow: 0 4px 12px rgba(31, 26, 24, 0.06);
+  transition: transform 0.22s ease, background-color 0.22s ease;
+}
+
+img + p::before {
+  content: "✦ ";
+  color: var(--gold-warm);
+}
+
+img + p::after {
+  content: " ✦";
+  color: var(--gold-warm);
+}
+
+img + p:hover {
+  transform: translateY(-2px);
+  background-color: #F5E8D8;
+}
+
+img:nth-of-type(even) + p {
+  border-left-color: var(--rosewood-deep);
+  border-right-color: var(--merona-rich);
+  color: var(--burgundy-dark);
+}
+
+@media (max-width: 720px) {
+  img,
+  img + p {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 12px 0 !important;
+    display: block !important;
+  }
+}
+
+/* TABEL DAFTAR HARGA */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--surface-card);
+  border: 1px solid var(--line-warm);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 14px;
+  box-shadow: 0 6px 16px rgba(31, 26, 24, 0.05);
+}
+
+th, td {
+  border-bottom: 1px solid var(--line-warm);
+  border-right: 1px solid var(--line-warm);
+  padding: 12px 14px;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+th:last-child, td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  background-color: var(--rosewood-deep);
+  color: #FFFDF9;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+tr:nth-child(even) td {
+  background-color: #F6EFE6;
+}
+
+tr:hover td {
+  background-color: #EFE2D2;
+}
+
+/* KONTAK */
+input, select, textarea {
+  width: 100%;
+  padding: 11px 14px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  border: 1px solid #CBBBA9;
+  border-left: 3px solid var(--line-warm);
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  color: var(--ink-rich);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, border-left-color 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--rosewood-deep);
+  border-left-color: var(--gold-warm);
+  box-shadow: 0 0 0 3px rgba(122, 46, 58, 0.15);
+}
+
+button {
+  background-color: var(--merona-rich);
+  color: #FFFFFF;
+  border: 1px solid var(--gold-warm);
+  border-radius: 999px;
+  padding: 11px 24px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 14px rgba(184, 67, 53, 0.28);
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+button:hover {
+  background-color: var(--rosewood-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(122, 46, 58, 0.34);
+}
+
+/* TOMBOL WHATSAPP (Selaras dengan tema Merona & Gold) */
+.tombol-wa {
+  display: inline-block;
+  background-color: var(--rosewood-deep);
+  color: var(--gold-soft);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--gold-warm);
+  margin-top: 8px;
+  box-shadow: 0 5px 14px rgba(74, 24, 34, 0.25);
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tombol-wa:hover {
+  background-color: var(--merona-rich);
+  color: #FFFDF9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(184, 67, 53, 0.32);
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--rosewood-deep);
+  color: #F7E9E2;
+  text-align: center;
+  padding: 26px 16px;
+  margin-top: 44px;
+  border-top: 3px solid var(--gold-warm);
+  font-size: 0.92rem;
+}
